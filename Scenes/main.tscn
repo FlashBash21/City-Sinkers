@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2hq4dsbslnqq"]
 
-[ext_resource type="Script" path="res://City-Sinkers/Scripts/main.gd" id="1_6wt7y"]
-[ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://City-Sinkers/Assets/Sprites/temp_tilesheet.png" id="1_j73y0"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_f3y7c"]
+[ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://Assets/Sprites/temp_tilesheet.png" id="1_j73y0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5cjy"]
 texture = ExtResource("1_j73y0")
@@ -275,7 +275,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_k5cjy")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_6wt7y")
+script = ExtResource("1_f3y7c")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vic6r")

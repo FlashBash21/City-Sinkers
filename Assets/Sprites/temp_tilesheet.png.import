@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcl01mesrjvho"
-path="res://.godot/imported/temp_tilesheet.png-47f3f19569e93873393466d49dfa2759.ctex"
+path="res://.godot/imported/temp_tilesheet.png-a9ddc651036bd00cf195637197e2e8e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://City-Sinkers/Assets/Sprites/temp_tilesheet.png"
-dest_files=["res://.godot/imported/temp_tilesheet.png-47f3f19569e93873393466d49dfa2759.ctex"]
+source_file="res://Assets/Sprites/temp_tilesheet.png"
+dest_files=["res://.godot/imported/temp_tilesheet.png-a9ddc651036bd00cf195637197e2e8e5.ctex"]
 
 [params]
 
