@@ -1,0 +1,5 @@
+CollisionShape2D
+CharacterBody2D
+ColorRect
+AnimatedSprite2D
+Sprite2D
