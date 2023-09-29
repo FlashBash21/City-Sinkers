@@ -25,8 +25,8 @@ func init_map(x:int, y:int):
 
 
 func mine_tile(tile:Vector2i):
-	if (tilemap.get_cell_atlas_coords(0, tile) == Vector2i(16,8)):
-		tilemap.set_cell(0, tile, 0, Vector2i(0, 2), 0)
+	if (tilemap.get_cell_atlas_coords(1, tile) == Vector2i(16,8)):
+		tilemap.set_cell(1, tile, 0, Vector2i(-1, -1), -1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,10 +36,11 @@ func _ready():
 	
 	for w in range(map_width):
 		for h in range(map_height):
-			tilemap.set_cell(0, Vector2i(w, h), 0, Vector2i(16, 8), 0) #dirt blocks
+			tilemap.set_cell(0, Vector2i(w, h), 0, Vector2i(0, 2), 0) #background blocks
+			tilemap.set_cell(1, Vector2i(w, h), 0, Vector2i(16, 8), 0) #foreground blocks
 	for w in range(4, 8):
 		for h in range(4, 8):
-			tilemap.set_cell(0, Vector2i(w,h), 0, Vector2i(0, 2), 0) #grass blocks
+			tilemap.set_cell(1, Vector2i(w,h), 0, Vector2i(-1, -1), -1) #starting area (air blocks)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
