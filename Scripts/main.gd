@@ -24,6 +24,7 @@ func init_map(x:int, y:int):
 	return map
 
 
+#breaks foreground tiles
 func mine_tile(tile:Vector2i):
 	if (tilemap.get_cell_atlas_coords(1, tile) == Vector2i(16,8)):
 		tilemap.set_cell(1, tile, 0, Vector2i(-1, -1), -1)
@@ -45,7 +46,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.is_action_just_pressed("mine")):
-		var nearby = tilemap.get_surrounding_cells(tilemap.local_to_map(player.get("position")))
-		for i in nearby:
-			mine_tile(i)
+	if (Input.is_action_just_pressed("mine_right")):
+		var tile = tilemap.get_neighbor_cell(
+									tilemap.local_to_map(
+											player.get("position")), 0)
+		mine_tile(tile)
