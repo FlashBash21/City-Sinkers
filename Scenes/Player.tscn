@@ -3,21 +3,19 @@
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gfk72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pb4d0"]
-size = Vector2(26, 38)
+size = Vector2(38, 39)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, 1)
 collision_layer = 2
 script = ExtResource("1_gfk72")
 
 [node name="Sprite" type="ColorRect" parent="."]
-offset_left = -14.0
-offset_top = -39.0
-offset_right = 14.0
-offset_bottom = 1.0
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = 3.0
 color = Color(0.843137, 0.105882, 0.105882, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -18)
+position = Vector2(0, -17.5)
 shape = SubResource("RectangleShape2D_pb4d0")

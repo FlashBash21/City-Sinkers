@@ -820,4 +820,12 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("3_8cra8")]
-position = Vector2(357, 385)
+position = Vector2(314, 295)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 2)
+zoom = Vector2(0.75, 0.75)
+limit_left = 0
+limit_top = 0
+limit_right = 2304
+position_smoothing_enabled = true
