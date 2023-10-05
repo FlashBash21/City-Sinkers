@@ -2,3 +2,5 @@ res://Scenes/main.tscn
 res://Scenes/Player.tscn
 res://Scripts/Player.gd
 res://Scripts/main.gd
+res://Scenes/Inventory.tscn
+res://Scripts/Inventory.gd

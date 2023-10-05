@@ -61,5 +61,5 @@ func _process(delta):
 		mine_tile(tile)
 	
 	if (Input.is_action_just_pressed("right_click")):
-		var tile = tilemap.local_to_map(get_viewport().get_mouse_position())
+		var tile = tilemap.local_to_map(get_global_mouse_position())
 		explode_at(tile)

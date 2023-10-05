@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnuj5hqja8xy8"]
+
+[ext_resource type="Texture2D" uid="uid://cyyftvol8vaca" path="res://Assets/Sprites/inv_tile.png" id="1_2ceiq"]
+[ext_resource type="Script" path="res://Scripts/Inventory.gd" id="1_ahmia"]
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource("1_ahmia")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ceiq")
