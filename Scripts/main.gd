@@ -1,8 +1,10 @@
 extends Node2D
 
+@onready var player : CharacterBody2D = $Player
+@onready var inventory_interface : Control = $UI/InventoryInterface
+
 
 var tilemap
-var player
 
 var map_width := 36
 var map_height := 22
@@ -42,6 +44,9 @@ func _ready():
 	for w in range(4, 8):
 		for h in range(4, 8):
 			tilemap.set_cell(1, Vector2i(w,h), 0, Tiles.EMPTY, -1) #starting area (air blocks)
+			
+	#setup inventory
+	inventory_interface.set_player_inventory_data(player.inventory_data)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

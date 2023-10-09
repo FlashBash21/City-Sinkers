@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item_Data" load_steps=4 format=3 uid="uid://cuyep7xwtjd18"]
+
+[ext_resource type="Script" path="res://Scripts/Item_Data.gd" id="1_1vdt4"]
+[ext_resource type="Texture2D" uid="uid://c6qqj2a86jjtm" path="res://Assets/Sprites/TNT.png" id="2_t3vsw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwrdt"]
+atlas = ExtResource("2_t3vsw")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+script = ExtResource("1_1vdt4")
+name = "TNT"
+desc = "Explosive!"
+stackable = true
+texture = SubResource("AtlasTexture_uwrdt")

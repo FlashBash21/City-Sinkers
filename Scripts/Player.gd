@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var inventory_data : Inventory_Data
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0

@@ -1,3 +1,13 @@
+Control
+GridContainer
+MarginContainer
+PanelContainer
+Container
+TextureRect
+Label
+TextEdit
+RichTextLabel
+CanvasLayer
 Sprite2D
 Camera2D
 RigidBody2D

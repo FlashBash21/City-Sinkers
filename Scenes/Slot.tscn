@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c26un45qc2jok"]
+
+[ext_resource type="Script" path="res://Scripts/Slot.gd" id="1_1hhrr"]
+[ext_resource type="Texture2D" uid="uid://cyyftvol8vaca" path="res://Assets/Sprites/inv_tile.png" id="1_5anth"]
+
+[node name="Slot" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_1hhrr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_5anth")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="QuantityLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "x99"
