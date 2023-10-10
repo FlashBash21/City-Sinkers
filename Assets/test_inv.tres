@@ -16,4 +16,4 @@ quantity = 1
 
 [resource]
 script = ExtResource("1_evpty")
-inv = Array[ExtResource("2_oowti")]([SubResource("Resource_ogtwm"), null, null, null, SubResource("Resource_6o8g2"), null])
+inv = Array[ExtResource("2_oowti")]([SubResource("Resource_ogtwm"), null, SubResource("Resource_6o8g2")])

@@ -9,7 +9,6 @@ var tilemap
 var map_width := 36
 var map_height := 22
 
-
 #breaks foreground tiles
 func mine_tile(tile:Vector2i):
 	if (tilemap.get_cell_atlas_coords(1, tile) == Tiles.DIRT):

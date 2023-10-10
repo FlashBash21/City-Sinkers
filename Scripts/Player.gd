@@ -5,11 +5,38 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 
+var selected_slot : int = 0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func modify_slot(index : int) -> void:
+	if inventory_data.inv.size()-1 < index:
+		push_error("Tried to access non-existent inventory tile")
+		return
+	var slot = inventory_data.inv[index]
+	if slot.quantity > 1:
+		slot.quantity -= 1
+	else:
+		inventory_data.inv.remove_at(index)
+		
+#handle other, less important code
+func _process(delta) -> void:
+	if(Input.is_action_just_pressed("use_item")):
+		print("Boom!")
+		modify_slot(selected_slot)
+	if(Input.is_action_just_pressed("select_left")
+		 || Input.is_action_just_pressed("select_right")):
+			var i = Input.get_action_strength("select_right") - Input.get_action_strength("select_left")
+			selected_slot += i
+			if (selected_slot > inventory_data.inv.size()-1):
+				selected_slot = 0
+			elif (selected_slot < 0):
+				selected_slot = inventory_data.inv.size()-1
+			print("Selected Slot: " + str(selected_slot))
 
-func _physics_process(delta):
+#handle physics code
+func _physics_process(delta) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
