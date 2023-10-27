@@ -64,6 +64,8 @@ func _process(delta):
 		var tile = tilemap.get_neighbor_cell(tilemap.local_to_map(player.get("position")), tile_to_mine)
 		mine_tile(tile)
 	
-	if (Input.is_action_just_pressed("right_click")):
+	if (Input.is_action_just_pressed("right_click") && player.isSlotPopulated(player.selected_slot)):
 		var tile = tilemap.local_to_map(get_global_mouse_position())
 		explode_at(tile)
+		player.modify_slot(player.selected_slot)
+		inventory_interface.set_player_inventory_data(player.inventory_data)

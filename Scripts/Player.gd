@@ -15,10 +15,17 @@ func modify_slot(index : int) -> void:
 		push_error("Tried to access non-existent inventory tile")
 		return
 	var slot = inventory_data.inv[index]
+	if slot == null: return;
 	if slot.quantity > 1:
 		slot.quantity -= 1
 	else:
-		inventory_data.inv.remove_at(index)
+		inventory_data.inv[index] = null;
+
+func isSlotPopulated(index : int) -> bool:
+	var slot = inventory_data.inv[index]
+	if (slot == null): return false
+	if (slot.quantity < 1): return false;
+	return true
 		
 #handle other, less important code
 func _process(delta) -> void:

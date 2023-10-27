@@ -8,6 +8,6 @@ func set_slot_data(slot_data : Slot_Data) -> void:
 	texture.texture = item_data.texture
 	tooltip_text = "%s\n%s" % [item_data.name, item_data.desc]
 	
-	if slot_data.quantity > 1:
+	if slot_data.quantity > -1:
 		quantity_label.text = "x%s" % slot_data.quantity
 		quantity_label.show()
