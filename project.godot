@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Tiles="*res://Scripts/Tiles.gd"
 
+[dotnet]
+
+project/assembly_name="City-Sinkers"
+
 [input]
 
 mine_left={

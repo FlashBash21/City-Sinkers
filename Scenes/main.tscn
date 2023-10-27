@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2hq4dsbslnqq"]
+[gd_scene load_steps=7 format=3 uid="uid://d2hq4dsbslnqq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_f3y7c"]
 [ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://Assets/Sprites/temp_tilesheet.png" id="1_j73y0"]
 [ext_resource type="PackedScene" uid="uid://ddl4ydxuxroyv" path="res://Scenes/Player.tscn" id="3_8cra8"]
+[ext_resource type="PackedScene" uid="uid://dyfmi3mxfpa4d" path="res://Scenes/Building.tscn" id="4_iw5md"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5cjy"]
 texture = ExtResource("1_j73y0")
@@ -448,9 +449,11 @@ texture_region_size = Vector2i(64, 64)
 15:6/0 = 0
 15:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:6/0/physics_layer_0/angular_velocity = 0.0
+16:6/next_alternative_id = 2
 16:6/0 = 0
 16:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 16:6/0/physics_layer_0/angular_velocity = 0.0
+16:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
 17:6/0 = 0
 17:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:6/0/physics_layer_0/angular_velocity = 0.0
@@ -653,6 +656,7 @@ texture_region_size = Vector2i(64, 64)
 17:9/0 = 0
 17:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:9/0/physics_layer_0/angular_velocity = 0.0
+17:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 18:9/0 = 0
 18:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 18:9/0/physics_layer_0/angular_velocity = 0.0
@@ -811,16 +815,23 @@ script = ExtResource("1_f3y7c")
 tile_set = SubResource("TileSet_vic6r")
 format = 2
 layer_0/name = "background"
-layer_1/name = "foreground"
+layer_1/name = "midground"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
+layer_2/name = "foreground"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("3_8cra8")]
-position = Vector2(314, 295)
+position = Vector2(314, 293)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 2)
@@ -829,3 +840,9 @@ limit_left = 0
 limit_top = 0
 limit_right = 2304
 position_smoothing_enabled = true
+
+[node name="RigidBody2D" parent="." instance=ExtResource("4_iw5md")]
+position = Vector2(387, -132)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("4_iw5md")]
+position = Vector2(742, -133)
