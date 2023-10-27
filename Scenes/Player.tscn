@@ -6,7 +6,6 @@
 size = Vector2(38, 39)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
 script = ExtResource("1_gfk72")
 
 [node name="Sprite" type="ColorRect" parent="."]
