@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=10 format=3 uid="uid://d2hq4dsbslnqq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_f3y7c"]
@@ -8,8 +9,17 @@
 [ext_resource type="Script" path="res://Scripts/InventoryInterface.gd" id="5_ixvd0"]
 [ext_resource type="PackedScene" uid="uid://dyfmi3mxfpa4d" path="res://Scenes/Building.tscn" id="7_lt5cm"]
 
+;[gd_scene load_steps=9 format=3 uid="uid://d2hq4dsbslnqq"]
+
+;[ext_resource type="Script" path="res://Scripts/main.gd" id="1_pfp6t"]
+;[ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://Assets/Sprites/temp_tilesheet.png" id="2_xdm3x"]
+;[ext_resource type="Texture2D" uid="uid://b3xy1r1uk2tfd" path="res://Assets/Sprites/TNT_spritesheet.png" id="3_4eqvc"]
+;[ext_resource type="PackedScene" uid="uid://ddl4ydxuxroyv" path="res://Scenes/Player.tscn" id="3_rdxc7"]
+;[ext_resource type="PackedScene" uid="uid://cktg4ln26tguc" path="res://Scenes/tnt.tscn" id="4_ny3hv"]
+
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5cjy"]
-texture = ExtResource("1_j73y0")
+texture = ExtResource("2_xdm3x")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -805,14 +815,18 @@ texture_region_size = Vector2i(64, 64)
 0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:3/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gwwc"]
+texture = ExtResource("3_4eqvc")
+texture_region_size = Vector2i(32, 32)
+
 [sub_resource type="TileSet" id="TileSet_vic6r"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_k5cjy")
+sources/1 = SubResource("TileSetAtlasSource_0gwwc")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_f3y7c")
+script = ExtResource("1_pfp6t")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vic6r")
@@ -867,3 +881,5 @@ offset_bottom = 26.0
 
 [node name="RigidBody2D" parent="." instance=ExtResource("7_lt5cm")]
 position = Vector2(261.51, -150)
+[node name="TNT" parent="." instance=ExtResource("4_ny3hv")]
+position = Vector2(309, 279)
