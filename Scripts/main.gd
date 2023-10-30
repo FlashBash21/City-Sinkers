@@ -1,7 +1,9 @@
 extends Node2D
 
+@onready var player : CharacterBody2D = $Player
+@onready var inventory_interface : Control = $UI/InventoryInterface
+
 var tilemap
-var player
 
 var map_width := 36
 var map_height := 22
@@ -10,6 +12,7 @@ var buildings = []
 var Building = preload("res://Scenes/Building.tscn")
 
 # allows mining to destroy DIRT
+#breaks foreground tiles
 func mine_tile(tile:Vector2i):
 	if (tilemap.get_cell_atlas_coords(1, tile) == Tiles.DIRT):
 		tilemap.set_cell(1, tile, 0, Tiles.EMPTY, -1)
@@ -69,6 +72,9 @@ func _ready():
 	for w in range(4, 8):
 		for h in range(4, 8):
 			tilemap.set_cell(1, Vector2i(w,h), 0, Tiles.EMPTY, -1) #starting area (air blocks)
+			
+	#setup inventory
+	inventory_interface.set_player_inventory_data(player.inventory_data)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -86,9 +92,9 @@ func _process(_delta):
 	if (tile_to_mine > -1):
 		var tile = tilemap.get_neighbor_cell(tilemap.local_to_map(player.get("position")), tile_to_mine)
 		mine_tile(tile)
-	
-	if (Input.is_action_just_pressed("right_click")):
+
+	if (Input.is_action_just_pressed("right_click") && player.isSlotPopulated(player.selected_slot)):
 		var tile = tilemap.local_to_map(get_global_mouse_position())
 		explode_at(tile)
-
-
+		player.modify_slot(player.selected_slot)
+		inventory_interface.set_player_inventory_data(player.inventory_data)

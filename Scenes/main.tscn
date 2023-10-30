@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2hq4dsbslnqq"]
+[gd_scene load_steps=9 format=3 uid="uid://d2hq4dsbslnqq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_f3y7c"]
 [ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://Assets/Sprites/temp_tilesheet.png" id="1_j73y0"]
 [ext_resource type="PackedScene" uid="uid://ddl4ydxuxroyv" path="res://Scenes/Player.tscn" id="3_8cra8"]
-[ext_resource type="PackedScene" uid="uid://dyfmi3mxfpa4d" path="res://Scenes/Building.tscn" id="4_iw5md"]
+
+[ext_resource type="PackedScene" uid="uid://cjft75xkel4be" path="res://Scenes/Inventory.tscn" id="4_cibmb"]
+[ext_resource type="Resource" uid="uid://c36716wbyhm8" path="res://Assets/test_inv.tres" id="4_yb6jo"]
+[ext_resource type="Script" path="res://Scripts/InventoryInterface.gd" id="5_ixvd0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5cjy"]
 texture = ExtResource("1_j73y0")
@@ -831,18 +834,36 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("3_8cra8")]
-position = Vector2(314, 293)
+position = Vector2(314, 295)
+inventory_data = ExtResource("4_yb6jo")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 2)
+position = Vector2(-1, 2)
 zoom = Vector2(0.75, 0.75)
 limit_left = 0
 limit_top = 0
 limit_right = 2304
 position_smoothing_enabled = true
 
-[node name="RigidBody2D" parent="." instance=ExtResource("4_iw5md")]
-position = Vector2(387, -132)
-
 [node name="RigidBody2D2" parent="." instance=ExtResource("4_iw5md")]
 position = Vector2(742, -133)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = ExtResource("5_ixvd0")
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("4_cibmb")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 26.0
