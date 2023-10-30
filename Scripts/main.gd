@@ -122,7 +122,7 @@ func _process(_delta):
 		var tile = tilemap.get_neighbor_cell(tilemap.local_to_map(player.get("position")), tile_to_mine)
 		mine_tile(tile)
 
-	if (Input.is_action_just_pressed("right_click") && player.isSlotPopulated(player.selected_slot)):
+	if (Input.is_action_just_pressed("explode") && player.isSlotPopulated(player.selected_slot)):
 		var tile = tilemap.local_to_map(get_global_mouse_position())
 		explode_at(tile)
 		player.modify_slot(player.selected_slot)
@@ -135,7 +135,7 @@ func _process(_delta):
 		
 	if (Input.is_action_just_pressed("place_block") && resources >= 1):
 		resources = resources - 1
-		if ((mousePosition - playerPosition).length_squared()) == 1:
+		if ((mousePosition - playerPosition).length_squared()) <= 1:
 			place_tile(mousePosition)
 
 #	print(tilemap.local_to_map(get_global_mouse_position()))

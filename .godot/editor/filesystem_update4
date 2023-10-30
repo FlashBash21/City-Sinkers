@@ -1,6 +1,9 @@
-res://Scenes/Player.tscn
+res://Scenes/main.tscn
 res://Scripts/Player.gd
 res://Assets/Items/tnt.tres
 res://Assets/test_inv.tres
-res://Scenes/main.tscn
 res://Scripts/main.gd
+res://Scripts/Building.gd
+res://Scripts/tnt.gd
+res://Scenes/tnt.tscn
+res://Scenes/Player.tscn

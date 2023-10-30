@@ -7,8 +7,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	print($Area2D.get_overlapping_areas())
+func _process(_delta):
+	pass
+	#print($Area2D.get_overlapping_areas())
 
 
 
@@ -42,5 +43,5 @@ func _process(delta):
 
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	print("Detected")

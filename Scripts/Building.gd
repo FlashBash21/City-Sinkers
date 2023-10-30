@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# when the building is not moving it won't interact with the player 
 	if get_linear_velocity() == Vector2(0,0):
 		if abs(resting_y - moving_y) > Tiles.TILE_SIZE.y * 8:

@@ -1,22 +1,14 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2hq4dsbslnqq"]
 
-[gd_scene load_steps=10 format=3 uid="uid://d2hq4dsbslnqq"]
-
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_f3y7c"]
-[ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://Assets/Sprites/temp_tilesheet.png" id="1_j73y0"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_pfp6t"]
+[ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://Assets/Sprites/temp_tilesheet.png" id="2_xdm3x"]
+[ext_resource type="Texture2D" uid="uid://b3xy1r1uk2tfd" path="res://Assets/Sprites/TNT_spritesheet.png" id="3_4eqvc"]
 [ext_resource type="PackedScene" uid="uid://ddl4ydxuxroyv" path="res://Scenes/Player.tscn" id="3_8cra8"]
 [ext_resource type="PackedScene" uid="uid://cjft75xkel4be" path="res://Scenes/Inventory.tscn" id="4_cibmb"]
+[ext_resource type="PackedScene" uid="uid://cktg4ln26tguc" path="res://Scenes/tnt.tscn" id="4_ny3hv"]
 [ext_resource type="Resource" uid="uid://c36716wbyhm8" path="res://Assets/test_inv.tres" id="4_yb6jo"]
 [ext_resource type="Script" path="res://Scripts/InventoryInterface.gd" id="5_ixvd0"]
 [ext_resource type="PackedScene" uid="uid://dyfmi3mxfpa4d" path="res://Scenes/Building.tscn" id="7_lt5cm"]
-
-;[gd_scene load_steps=9 format=3 uid="uid://d2hq4dsbslnqq"]
-
-;[ext_resource type="Script" path="res://Scripts/main.gd" id="1_pfp6t"]
-;[ext_resource type="Texture2D" uid="uid://bcl01mesrjvho" path="res://Assets/Sprites/temp_tilesheet.png" id="2_xdm3x"]
-;[ext_resource type="Texture2D" uid="uid://b3xy1r1uk2tfd" path="res://Assets/Sprites/TNT_spritesheet.png" id="3_4eqvc"]
-;[ext_resource type="PackedScene" uid="uid://ddl4ydxuxroyv" path="res://Scenes/Player.tscn" id="3_rdxc7"]
-;[ext_resource type="PackedScene" uid="uid://cktg4ln26tguc" path="res://Scenes/tnt.tscn" id="4_ny3hv"]
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5cjy"]
 texture = ExtResource("2_xdm3x")
@@ -881,5 +873,6 @@ offset_bottom = 26.0
 
 [node name="RigidBody2D" parent="." instance=ExtResource("7_lt5cm")]
 position = Vector2(261.51, -150)
+
 [node name="TNT" parent="." instance=ExtResource("4_ny3hv")]
 position = Vector2(309, 279)

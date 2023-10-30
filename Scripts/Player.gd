@@ -29,14 +29,14 @@ func isSlotPopulated(index : int) -> bool:
 	return true
 		
 #handle other, less important code
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if(Input.is_action_just_pressed("use_item")):
 		print("Boom!")
 		modify_slot(selected_slot)
 	if(Input.is_action_just_pressed("select_left")
 		 || Input.is_action_just_pressed("select_right")):
 			var i = Input.get_action_strength("select_right") - Input.get_action_strength("select_left")
-			selected_slot += i
+			selected_slot += int(i)
 			if (selected_slot > inventory_data.inv.size()-1):
 				selected_slot = 0
 			elif (selected_slot < 0):
