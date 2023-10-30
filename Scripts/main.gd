@@ -3,7 +3,7 @@ extends Node2D
 @onready var player : CharacterBody2D = $Player
 @onready var inventory_interface : Control = $UI/InventoryInterface
 
-var tilemap
+@onready var tilemap : TileMap = $TileMap
 
 var map_width := 36
 var map_height := 22
@@ -55,7 +55,7 @@ func _ready():
 	
 	player = $Player
 	player.respawn_me.connect(respawn)
-	tilemap = get_node("TileMap")
+	#tilemap = get_node("TileMap")
 	player.set_position(tilemap.map_to_local(Vector2i(6,6)))
 	
 	
