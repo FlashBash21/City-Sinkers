@@ -134,8 +134,8 @@ func _process(_delta):
 	#	explode_at(tile)
 		
 	if (Input.is_action_just_pressed("place_block") && resources >= 1):
-		resources = resources - 1
 		if ((mousePosition - playerPosition).length_squared()) <= 1:
+			resources = resources - 1
 			place_tile(mousePosition)
 
 #	print(tilemap.local_to_map(get_global_mouse_position()))
