@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyfmi3mxfpa4d"]
+
+[ext_resource type="Script" path="res://Scripts/Building.gd" id="1_rjeek"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_grfpe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rry2m"]
+size = Vector2(94.6154, 172.471)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(1.51, 2)
+collision_layer = 8
+max_contacts_reported = 8
+contact_monitor = true
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_rjeek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.51, -2)
+scale = Vector2(202.875, 265.25)
+texture = SubResource("PlaceholderTexture2D_grfpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.51004, -2.5)
+scale = Vector2(2.1, 1.516)
+shape = SubResource("RectangleShape2D_rry2m")
+
+[node name="Area2D" type="Area2D" parent="." groups=["building"]]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.01001, -2)
+scale = Vector2(2.2, 1.589)
+shape = SubResource("RectangleShape2D_rry2m")
