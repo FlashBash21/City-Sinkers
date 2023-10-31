@@ -11,7 +11,7 @@ var map_height := 22
 
 var buildings = []
 var Building = preload("res://Scenes/Building.tscn")
-var resources = 10;
+var resources = 100;
 var last_input
 
 # allows mining to destroy DIRT
@@ -134,7 +134,7 @@ func _process(_delta):
 	#	explode_at(tile)
 		
 	if (Input.is_action_just_pressed("place_block") && resources >= 1):
-		if ((mousePosition - playerPosition).length_squared()) <= 1:
+		if ((mousePosition - playerPosition).length_squared()) <= 2:
 			resources = resources - 1
 			place_tile(mousePosition)
 

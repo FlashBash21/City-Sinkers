@@ -12,36 +12,6 @@ func _process(_delta):
 	#print($Area2D.get_overlapping_areas())
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 func _on_area_2d_body_entered(_body):
 	print("Detected")
+	queue_free()
