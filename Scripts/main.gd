@@ -63,6 +63,7 @@ func _ready():
 	
 	player = $Player
 	player.respawn_me.connect(respawn)
+	player.update_player_inv.connect(func(): inventory_interface.set_player_inventory_data(player.inventory_data))
 	#tilemap = get_node("TileMap")
 
 	TNT = get_node("TNT")
@@ -125,7 +126,7 @@ func _process(_delta):
 	if (Input.is_action_just_pressed("explode") && player.isSlotPopulated(player.selected_slot)):
 		var tile = tilemap.local_to_map(get_global_mouse_position())
 		explode_at(tile)
-		player.modify_slot(player.selected_slot)
+		player.modify_slot_quantity(player.selected_slot, func(x): return x - 1)
 		inventory_interface.set_player_inventory_data(player.inventory_data)
 
 	

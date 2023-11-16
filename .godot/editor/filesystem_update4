@@ -5,5 +5,8 @@ res://Assets/test_inv.tres
 res://Scenes/Player.tscn
 res://Scenes/Slot.tscn
 res://Scenes/Inventory.tscn
-res://Scripts/tnt.gd
 res://Scenes/tnt.tscn
+res://Assets/Items/shovel.tres
+res://Scripts/Slot.gd
+res://Scenes/Building.tscn
+res://Scripts/main.gd

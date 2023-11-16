@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal respawn_me
+signal update_player_inv
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 
@@ -11,16 +12,18 @@ var selected_slot : int = 0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-func modify_slot(index : int) -> void:
+func modify_slot_quantity(index : int, f : Callable) -> void:
 	if inventory_data.inv.size()-1 < index:
 		push_error("Tried to access non-existent inventory tile")
 		return
 	var slot = inventory_data.inv[index]
 	if slot == null: return;
-	if slot.quantity > 1:
-		slot.quantity -= 1
-	else:
+	
+	slot.quantity = f.call(slot.quantity)
+	
+	if slot.quantity < 1:
 		inventory_data.inv[index] = null;
+
 
 func isSlotPopulated(index : int) -> bool:
 	var slot = inventory_data.inv[index]
@@ -32,7 +35,7 @@ func isSlotPopulated(index : int) -> bool:
 func _process(_delta) -> void:
 	if(Input.is_action_just_pressed("use_item")):
 		print("Boom!")
-		modify_slot(selected_slot)
+		modify_slot_quantity(selected_slot, func(x): return x - 1)
 	if(Input.is_action_just_pressed("select_left")
 		 || Input.is_action_just_pressed("select_right")):
 			var i = Input.get_action_strength("select_right") - Input.get_action_strength("select_left")
@@ -65,5 +68,9 @@ func _physics_process(delta) -> void:
 
 
 func _on_hurtbox_area_entered(area):
+	
 	if area.is_in_group("building"):
 		emit_signal("respawn_me")
+	if area.is_in_group("tnt"):
+		modify_slot_quantity(0, func(x): return x + 1)
+		emit_signal("update_player_inv")

@@ -17,7 +17,7 @@ hframes = 5
 vframes = 4
 frame = 4
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["tnt"]]
 position = Vector2(0, 4)
 collision_mask = 2
 
