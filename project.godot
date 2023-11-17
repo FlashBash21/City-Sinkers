@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Tiles="*res://Scripts/Tiles.gd"
 Inventory="*res://Scripts/Inventory_Data.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [dotnet]
 

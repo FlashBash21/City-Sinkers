@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item_Data" load_steps=4 format=3 uid="uid://mjdvplisojkp"]
+
+[ext_resource type="Script" path="res://Scripts/Item_Data.gd" id="1_htk0y"]
+[ext_resource type="Texture2D" uid="uid://bmxk58yb5wis2" path="res://Assets/Sprites/Coin.png" id="2_c402p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpjge"]
+atlas = ExtResource("2_c402p")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+script = ExtResource("1_htk0y")
+name = "Coin"
+desc = "Money!"
+stackable = true
+texture = SubResource("AtlasTexture_xpjge")

@@ -5,9 +5,10 @@ signal update_player_inv
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 
-@export var inventory_data : Inventory_Data
+var mine_timer : float
+var is_mining := false
 
-var selected_slot : int = 0
+@export var inventory_data : Inventory_Data
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,10 +20,10 @@ func modify_slot_quantity(index : int, f : Callable) -> void:
 	var slot = inventory_data.inv[index]
 	if slot == null: return;
 	
-	slot.quantity = f.call(slot.quantity)
+	slot.set_quantity(f.call(slot.quantity))
 	
 	if slot.quantity < 1:
-		inventory_data.inv[index] = null;
+		slot.quantity = 0;
 
 
 func isSlotPopulated(index : int) -> bool:
@@ -31,28 +32,34 @@ func isSlotPopulated(index : int) -> bool:
 	if (slot.quantity < 1): return false;
 	return true
 		
+func mine_interval(delta : float) -> bool:
+	var slot = inventory_data.inv[Globals.SHOVEL]
+	if (Input.is_action_pressed("mine")):
+		if not is_mining:
+			is_mining = true
+			mine_timer = 1.0 / (slot.quantity + 1) 
+		else:
+			mine_timer -= delta
+			if mine_timer <= 0: 
+				is_mining = false
+				return true
+	else:
+		is_mining = false
+	print(mine_timer)
+	return false
+	
 #handle other, less important code
 func _process(_delta) -> void:
-	if(Input.is_action_just_pressed("use_item")):
-		print("Boom!")
-		modify_slot_quantity(selected_slot, func(x): return x - 1)
-	if(Input.is_action_just_pressed("select_left")
-		 || Input.is_action_just_pressed("select_right")):
-			var i = Input.get_action_strength("select_right") - Input.get_action_strength("select_left")
-			selected_slot += int(i)
-			if (selected_slot > inventory_data.inv.size()-1):
-				selected_slot = 0
-			elif (selected_slot < 0):
-				selected_slot = inventory_data.inv.size()-1
-			print("Selected Slot: " + str(selected_slot))
+	pass
 
 #handle physics code
 func _physics_process(delta) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-	# Handle Jump.
+	
+	
+		# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -64,6 +71,8 @@ func _physics_process(delta) -> void:
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+		pass
 	move_and_slide()
 
 
@@ -72,5 +81,5 @@ func _on_hurtbox_area_entered(area):
 	if area.is_in_group("building"):
 		emit_signal("respawn_me")
 	if area.is_in_group("tnt"):
-		modify_slot_quantity(0, func(x): return x + 1)
+		modify_slot_quantity(Globals.TNT, func(x): return x + 1)
 		emit_signal("update_player_inv")

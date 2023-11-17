@@ -96,8 +96,6 @@ func _process(_delta):
 	var mousePosition = tilemap.local_to_map(get_global_mouse_position())
 	var playerPosition = tilemap.local_to_map(player.get_position())
 	
-	if(Input.is_action_pressed("mine")):
-		print("mine")
 		
 	if (Input.is_action_pressed("move_right") && Input.is_action_pressed("mine")):
 		tile_to_mine = 0;
@@ -118,15 +116,15 @@ func _process(_delta):
 		tile_to_mine = 12;
 	if (Input.is_action_pressed("mine") && Input.is_action_pressed("move_down")):
 		tile_to_mine = 4;
-
-	if (tile_to_mine > -1):
+	var can_mine = player.mine_interval(_delta)
+	if (can_mine):
 		var tile = tilemap.get_neighbor_cell(tilemap.local_to_map(player.get("position")), tile_to_mine)
 		mine_tile(tile)
 
-	if (Input.is_action_just_pressed("explode") && player.isSlotPopulated(player.selected_slot)):
+	if (Input.is_action_just_pressed("explode") && player.isSlotPopulated(Globals.TNT)):
 		var tile = tilemap.local_to_map(get_global_mouse_position())
 		explode_at(tile)
-		player.modify_slot_quantity(player.selected_slot, func(x): return x - 1)
+		player.modify_slot_quantity(Globals.TNT, func(x): return x - 1)
 		inventory_interface.set_player_inventory_data(player.inventory_data)
 
 	
