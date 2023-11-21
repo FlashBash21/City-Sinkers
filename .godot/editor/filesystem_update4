@@ -13,3 +13,4 @@ res://Scripts/Globals.gd
 res://Scripts/main.gd
 res://Scripts/Slot_Data.gd
 res://Assets/Items/coin.tres
+res://Scripts/Inventory.gd
