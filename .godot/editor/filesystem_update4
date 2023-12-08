@@ -2,15 +2,11 @@ res://Scenes/main.tscn
 res://Scripts/Player.gd
 res://Assets/Items/tnt.tres
 res://Assets/Items/shovel.tres
+res://Assets/Items/coin.tres
 res://Assets/test_inv.tres
 res://Scenes/Player.tscn
 res://Scenes/Slot.tscn
 res://Scenes/Inventory.tscn
 res://Scenes/tnt.tscn
 res://Scenes/Building.tscn
-res://Scripts/Tiles.gd
-res://Scripts/Globals.gd
 res://Scripts/main.gd
-res://Scripts/Slot_Data.gd
-res://Assets/Items/coin.tres
-res://Scripts/Inventory.gd

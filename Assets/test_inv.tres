@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_ogtwm"]
 script = ExtResource("2_oowti")
 item_data = ExtResource("1_k5qt1")
-quantity = 7
+quantity = 99
 
 [sub_resource type="Resource" id="Resource_22ppr"]
 script = ExtResource("2_oowti")

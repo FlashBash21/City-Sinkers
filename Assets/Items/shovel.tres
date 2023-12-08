@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="Item_Data" load_steps=4 format=3 uid="uid://wxf3ndmhvads"]
+[gd_resource type="Resource" script_class="Item_Data" load_steps=5 format=3 uid="uid://wxf3ndmhvads"]
 
 [ext_resource type="Script" path="res://Scripts/Item_Data.gd" id="1_asakt"]
-[ext_resource type="Texture2D" uid="uid://d044doexg7s3s" path="res://Assets/Sprites/Shovel.png" id="2_p83ru"]
+[ext_resource type="Texture2D" uid="uid://jgr03vdlb335" path="res://Assets/Sprites/DiamondShovelUI.png" id="2_s5j0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ckuv"]
+atlas = ExtResource("2_s5j0r")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jnmf"]
-atlas = ExtResource("2_p83ru")
-region = Rect2(1, -1.5, 64, 64)
+atlas = SubResource("AtlasTexture_4ckuv")
+region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_asakt")

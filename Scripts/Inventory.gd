@@ -4,10 +4,10 @@ const Slot = preload("res://Scenes/Slot.tscn")
 
 @onready var item_grid : GridContainer = $MarginContainer/ItemGrid
 
-var shovel_types = ["res://Assets/Sprites/DirtShovel.png",
-					"res://Assets/Sprites/IronShovel.png",
-					"res://Assets/Sprites/DiamondShovel.png",
-					"res://Assets/Sprites/PurpleShovel.png"]
+var shovel_types = ["res://Assets/Sprites/DirtShovelUI.png",
+					"res://Assets/Sprites/IronShovelUI.png",
+					"res://Assets/Sprites/DiamondShovelUI.png",
+					"res://Assets/Sprites/PurpleShovelUI.png"]
 
 func set_inventory_data(inventory_data : Inventory_Data) -> void:
 	populate_item_grid(inventory_data.inv)

@@ -1,3 +1,5 @@
+AnimatedSprite2D
+Sprite2D
 Control
 GridContainer
 MarginContainer
@@ -8,16 +10,13 @@ Label
 TextEdit
 RichTextLabel
 CanvasLayer
-Sprite2D
 Camera2D
 RigidBody2D
 GPUParticles2D
 CollisionShape2D
 Node2D
-Sprite2D
 RigidBody2D
 Camera2D
 GPUParticles2D
 CharacterBody2D
 ColorRect
-AnimatedSprite2D

@@ -112,7 +112,7 @@ func _process(_delta):
 #	
 	if (Input.is_action_pressed("mine") && Input.is_action_pressed("move_left")):
 		tile_to_mine = 8;
-	if (Input.is_action_pressed("mine") && Input.is_action_pressed("jump")):
+	if (Input.is_action_pressed("mine") && Input.is_action_pressed("move_up")):
 		tile_to_mine = 12;
 	if (Input.is_action_pressed("mine") && Input.is_action_pressed("move_down")):
 		tile_to_mine = 4;
