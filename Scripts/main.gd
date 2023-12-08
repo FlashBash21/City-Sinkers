@@ -2,17 +2,32 @@ extends Node2D
 
 @onready var player : CharacterBody2D = $Player
 @onready var inventory_interface : Control = $UI/InventoryInterface
-
 @onready var tilemap : TileMap = $TileMap
+@onready var eventTimer : Timer = $EventTimer
+@onready var Events : Node = $Events
+@onready var makeBuildings : Node = $Events/MakeBuilding
+
+
+
+
 var TNT
+var Throwable_tnt = preload("res://Scenes/tnt_proj.tscn")
 
 var map_width := 36
 var map_height := 22
 
 var buildings = []
 var Building = preload("res://Scenes/Building.tscn")
+
+var BUILDING_POSITIONS = [Vector2i(3,2), Vector2i(6,2),Vector2i(9,2), Vector2i(12,2), Vector2i(15,2),
+						 Vector2i(18,2), Vector2i(21,2), Vector2i(24,2), Vector2i(27,2), Vector2i(30,2),
+						Vector2i(33,2)]
+
+
+
 var resources = 10;
 var last_input
+
 
 # allows mining to destroy DIRT
 #breaks foreground tiles
@@ -27,29 +42,24 @@ func place_tile(tile:Vector2i):
 
 
 # allows explode to destroy DIRT and FOUNDATION
-func explode_at(tile:Vector2i):
-	var surrounding_tiles = tilemap.get_surrounding_cells(tile)
-	if (tilemap.get_cell_atlas_coords(1, tile) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, tile) == Tiles.FOUNDATION): 
-		tilemap.set_cell(1, tile, 0, Tiles.EMPTY, -1)
-	for t in surrounding_tiles:
-		var s_tiles2 = tilemap.get_surrounding_cells(t)
-		for t2 in s_tiles2:
-			if (tilemap.get_cell_atlas_coords(1, t2) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t2) == Tiles.FOUNDATION):
-				tilemap.set_cell(1, t2, 0, Tiles.EMPTY, -1)
-		if (tilemap.get_cell_atlas_coords(1, t) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t) == Tiles.FOUNDATION):
-				tilemap.set_cell(1, t, 0, Tiles.EMPTY, -1)
+func explode_at(tile:Vector2i):    #target == tilemap.map_to_local(tile)
+	var tnt = Throwable_tnt.instantiate()
+	add_child(tnt)
+	tnt.set_position((player.get("position")) - Vector2(0,5))
+	tnt.set_vel(tilemap.map_to_local(tile) - tnt.get("position"), tile)
 
-
-# find the nearest empty tile that is outside the building
-func nearest_empty_tile():
-	# 1. get buildings location and size (using pixles?) and find all the tiles it is in and store them in an array (buildings_tiles)
-	# 2. use players position and get_surrounding_cells as an array of possible new locations to respawn
-	# 3. check each new location to see if it == Tile.EMPTY && != buildings_tiles
-	# 4. if true change the players location and break from function
-	# 5. if false call get_surround_cells on one of the previous surrounding cells and repeat from step 3 
-	#     (should this be recursive or a loop?)
-	pass
-
+	#tnt.set_velocity(1,1)
+	
+#	var surrounding_tiles = tilemap.get_surrounding_cells(tile)
+#	if (tilemap.get_cell_atlas_coords(1, tile) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, tile) == Tiles.FOUNDATION): 
+#		tilemap.set_cell(1, tile, 0, Tiles.EMPTY, -1)
+#	for t in surrounding_tiles:
+#		var s_tiles2 = tilemap.get_surrounding_cells(t)
+#		for t2 in s_tiles2:
+#			if (tilemap.get_cell_atlas_coords(1, t2) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t2) == Tiles.FOUNDATION):
+#				tilemap.set_cell(1, t2, 0, Tiles.EMPTY, -1)
+#		if (tilemap.get_cell_atlas_coords(1, t) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t) == Tiles.FOUNDATION):
+#				tilemap.set_cell(1, t, 0, Tiles.EMPTY, -1)
 
 #respawns the player 4 tiles to the left
 func respawn():
@@ -58,18 +68,20 @@ func respawn():
 	tilemap.set_cell(1, tilemap.local_to_map(player.get("position")), 0, Tiles.EMPTY, -1)
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#sets timer
+	eventTimer = $EventTimer
+	eventTimer.start()
 	
+	#sets player 
 	player = $Player
 	player.respawn_me.connect(respawn)
-	#tilemap = get_node("TileMap")
+	player.set_position(tilemap.map_to_local(Vector2i(6,6)))
 
 	TNT = get_node("TNT")
 	TNT.set_position(tilemap.map_to_local(Vector2i(5, 7)))
-	
-	player.set_position(tilemap.map_to_local(Vector2i(6,6)))
-	
 	
 	# sets main tiles
 	for w in range(map_width):
@@ -87,10 +99,14 @@ func _ready():
 			
 	#setup inventory
 	inventory_interface.set_player_inventory_data(player.inventory_data)
+	
+	makeBuildings.initializeBuildings() 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+
+	#print(eventTimer.time_left)
 	var tile_to_mine = -1; #check CellNeighbor Enum on https://docs.godotengine.org/en/stable/classes/class_tileset.html#enum-tileset-cellneighbor
 	var mousePosition = tilemap.local_to_map(get_global_mouse_position())
 	var playerPosition = tilemap.local_to_map(player.get_position())
@@ -142,3 +158,8 @@ func _process(_delta):
 #	print(tilemap.local_to_map(player.get_position()))
 #	print(tilemap.local_to_map(get_global_mouse_position()) - tilemap.local_to_map(player.get_position()))
 #	print((mousePosition - playerPosition).length_squared())
+
+
+func _on_event_timer_timeout():
+	Events.PickEvent()	
+	eventTimer.start()	

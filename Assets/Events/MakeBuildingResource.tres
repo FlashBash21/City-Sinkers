@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RandomEvent" load_steps=2 format=3 uid="uid://d33llt3ps7d5s"]
+
+[ext_resource type="Script" path="res://Scripts/Events/RandomEvent.gd" id="1_l10q5"]
+
+[resource]
+script = ExtResource("1_l10q5")
+NAME = "MakeBuilding"
+PICK_CHANCE = 20
+PICKABLE = true
