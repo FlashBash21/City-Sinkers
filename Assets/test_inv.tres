@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="Inventory_Data" load_steps=9 format=3 uid="uid://c36716wbyhm8"]
 
+[ext_resource type="Script" path="res://Scripts/Inventory_Data.gd" id="1_evpty"]
 [ext_resource type="Resource" uid="uid://cuyep7xwtjd18" path="res://Assets/Items/tnt.tres" id="1_k5qt1"]
 [ext_resource type="Script" path="res://Scripts/Slot_Data.gd" id="2_oowti"]
 [ext_resource type="Resource" uid="uid://wxf3ndmhvads" path="res://Assets/Items/shovel.tres" id="3_5hc8o"]
 [ext_resource type="Resource" uid="uid://mjdvplisojkp" path="res://Assets/Items/coin.tres" id="4_u88du"]
 
 [sub_resource type="Resource" id="Resource_ogtwm"]
-script = ExtResource("2_3msma")
+script = ExtResource("2_oowti")
 item_data = ExtResource("1_k5qt1")
 quantity = 99
 

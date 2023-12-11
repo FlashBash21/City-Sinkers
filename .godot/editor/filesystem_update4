@@ -1,4 +1,5 @@
-res://Scenes/main.tscn
+res://Scenes/Player.tscn
+res://Scripts/Inventory_Data.gd
 res://Scenes/Events.gd
 res://Scripts/Events/RandomEvent.gd
 res://Scripts/main.gd
@@ -6,15 +7,14 @@ res://Scripts/MakeBuilding.gd
 res://Scripts/Player.gd
 res://Scripts/Timer.gd
 res://Assets/Items/tnt.tres
+res://Assets/test_inv 2.tres
 res://Assets/Items/shovel.tres
 res://Assets/Items/coin.tres
 res://Assets/test_inv.tres
 res://Assets/Events/MakeBuildingResource.tres
 res://Assets/Events/RepairFoundation.tres
-res://Scenes/Player.tscn
-res://Scenes/Events.tscn
-res://Scenes/Building.tscn
-res://Scenes/tnt_proj.tscn
-res://Scripts/TNT_Proj.gd
+res://Scenes/Slot.tscn
+res://Scenes/Inventory.tscn
 res://Scenes/tnt.tscn
-res://Scripts/Building.gd
+res://Scenes/Building.tscn
+res://Scenes/main.tscn

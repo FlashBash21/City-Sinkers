@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ddl4ydxuxroyv" path="res://Scenes/Player.tscn" id="3_8cra8"]
 [ext_resource type="PackedScene" uid="uid://w8wi7hbk2n4j" path="res://Scenes/Inventory.tscn" id="4_cibmb"]
 [ext_resource type="PackedScene" uid="uid://dvadf3f78k2op" path="res://Scenes/tnt.tscn" id="4_ny3hv"]
-[ext_resource type="Resource" uid="uid://2yv8khaldk28" path="res://Assets/test_inv.tres" id="4_yb6jo"]
+[ext_resource type="Resource" uid="uid://c36716wbyhm8" path="res://Assets/test_inv.tres" id="4_yb6jo"]
 [ext_resource type="Script" path="res://Scripts/InventoryInterface.gd" id="5_ixvd0"]
 [ext_resource type="PackedScene" uid="uid://dyfmi3mxfpa4d" path="res://Scenes/Building.tscn" id="7_lt5cm"]
 [ext_resource type="Resource" uid="uid://d33llt3ps7d5s" path="res://Assets/Events/MakeBuildingResource.tres" id="10_8jce4"]
@@ -908,6 +908,7 @@ position_smoothing_enabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_2kg0m")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
