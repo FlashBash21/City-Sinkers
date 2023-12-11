@@ -18,3 +18,4 @@ res://Scenes/Inventory.tscn
 res://Scenes/tnt.tscn
 res://Scenes/Building.tscn
 res://Scenes/main.tscn
+res://Scripts/Tiles.gd
