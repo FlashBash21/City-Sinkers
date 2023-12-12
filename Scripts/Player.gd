@@ -46,7 +46,6 @@ func mine_interval(delta : float) -> bool:
 				return true
 	else:
 		is_mining = false
-	print(mine_timer)
 	return false
 	
 #handle other, less important code

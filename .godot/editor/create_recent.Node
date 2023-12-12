@@ -1,3 +1,5 @@
+GPUParticles2D
+CPUParticles2D
 AnimatedSprite2D
 Sprite2D
 Control
@@ -11,11 +13,9 @@ TextEdit
 RichTextLabel
 CanvasLayer
 Camera2D
-GPUParticles2D
 CollisionShape2D
 Node2D
 RigidBody2D
 Camera2D
-GPUParticles2D
 CharacterBody2D
 ColorRect

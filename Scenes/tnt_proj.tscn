@@ -1,10 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqw3b4nibxk0j"]
+[gd_scene load_steps=7 format=3 uid="uid://dqw3b4nibxk0j"]
 
 [ext_resource type="Script" path="res://Scripts/TNT_Proj.gd" id="1_k1oac"]
 [ext_resource type="Texture2D" uid="uid://c6qqj2a86jjtm" path="res://Assets/Sprites/TNT.png" id="2_5id31"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cm4kq"]
 size = Vector2(16, 16)
+
+[sub_resource type="Gradient" id="Gradient_hvdsn"]
+offsets = PackedFloat32Array(0.00201207, 1)
+colors = PackedColorArray(1, 0.415686, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jhr1d"]
+gradient = SubResource("Gradient_hvdsn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uis1w"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -400.0
+linear_accel_max = -400.0
+angle_max = 360.0
+scale_min = 2.0
+scale_max = 5.0
+color = Color(1, 0.52549, 0.458824, 1)
+color_ramp = SubResource("GradientTexture1D_jhr1d")
+hue_variation_min = -0.64
+hue_variation_max = 0.13
 
 [node name="TNT_Proj" type="RigidBody2D"]
 collision_layer = 0
@@ -20,5 +46,12 @@ texture = ExtResource("2_5id31")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_uis1w")
+lifetime = 0.7
+explosiveness = 0.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

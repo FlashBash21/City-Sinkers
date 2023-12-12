@@ -36,16 +36,23 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	tile = tilemap.local_to_map(get("position"))
-	var surrounding_tiles = tilemap.get_surrounding_cells(tile)
-	if (tilemap.get_cell_atlas_coords(1, tile) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, tile) == Tiles.FOUNDATION): 
-		tilemap.set_cell(1, tile, 0, Tiles.EMPTY, -1)
-	for t in surrounding_tiles:
-		var s_tiles2 = tilemap.get_surrounding_cells(t)
-		for t2 in s_tiles2:
-			if (tilemap.get_cell_atlas_coords(1, t2) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t2) == Tiles.FOUNDATION):
-				tilemap.set_cell(1, t2, 0, Tiles.EMPTY, -1)
-		if (tilemap.get_cell_atlas_coords(1, t) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t) == Tiles.FOUNDATION):
-				tilemap.set_cell(1, t, 0, Tiles.EMPTY, -1)
-	queue_free()
+	var particles = $GPUParticles2D
+	if particles.emitting:
+		queue_free()
+	else:
+		tile = tilemap.local_to_map(get("position"))
+		var surrounding_tiles = tilemap.get_surrounding_cells(tile)
+		if (tilemap.get_cell_atlas_coords(1, tile) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, tile) == Tiles.FOUNDATION): 
+			tilemap.set_cell(1, tile, 0, Tiles.EMPTY, -1)
+		for t in surrounding_tiles:
+			var s_tiles2 = tilemap.get_surrounding_cells(t)
+			for t2 in s_tiles2:
+				if (tilemap.get_cell_atlas_coords(1, t2) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t2) == Tiles.FOUNDATION):
+					tilemap.set_cell(1, t2, 0, Tiles.EMPTY, -1)
+			if (tilemap.get_cell_atlas_coords(1, t) == Tiles.DIRT || tilemap.get_cell_atlas_coords(1, t) == Tiles.FOUNDATION):
+					tilemap.set_cell(1, t, 0, Tiles.EMPTY, -1)
+		$Timer.wait_time = 0.7
+		$Timer.start()
+		particles.emitting = true
+		$Sprite2D.visible = false
 
