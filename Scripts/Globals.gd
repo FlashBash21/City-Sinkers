@@ -1,3 +1,3 @@
 extends Node
 
-enum {TNT, SHOVEL}
+enum {TNT, SHOVEL, COIN}

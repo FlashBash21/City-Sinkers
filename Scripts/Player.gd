@@ -19,6 +19,7 @@ func modify_slot_quantity(index : int, f : Callable) -> void:
 		push_error("Tried to access non-existent inventory tile")
 		return
 	var slot = inventory_data.inv[index]
+	print(slot)
 	if slot == null: return;
 	
 	slot.set_quantity(f.call(slot.quantity))
@@ -46,7 +47,7 @@ func mine_interval(delta : float) -> bool:
 				return true
 	else:
 		is_mining = false
-	print(mine_timer)
+
 	return false
 	
 #handle other, less important code
@@ -89,4 +90,7 @@ func _on_hurtbox_area_entered(area):
 		emit_signal("respawn_me")
 	if area.is_in_group("tnt"):
 		modify_slot_quantity(Globals.TNT, func(x): return x + 1)
+		emit_signal("update_player_inv")
+	if area.is_in_group("coin"):
+		modify_slot_quantity(Globals.COIN, func(x): return x + 1)
 		emit_signal("update_player_inv")

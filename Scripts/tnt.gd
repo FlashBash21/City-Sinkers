@@ -13,5 +13,4 @@ func _process(_delta):
 
 
 func _on_area_2d_body_entered(_body):
-	print("Detected")
 	queue_free()

@@ -1,16 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyfmi3mxfpa4d"]
 
 [ext_resource type="Script" path="res://Scripts/Building.gd" id="1_rjeek"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_grfpe"]
+[ext_resource type="Texture2D" uid="uid://c0c34kc5jkhkh" path="res://Assets/Sprites/32x32.png" id="2_amja5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rry2m"]
-size = Vector2(94.6154, 172.471)
+size = Vector2(109.037, 165.061)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 show_behind_parent = true
 visibility_layer = 4
-position = Vector2(1.51, 2)
+position = Vector2(1.51, 0)
 collision_layer = 8
 collision_mask = 9
 max_contacts_reported = 8
@@ -20,12 +19,11 @@ lock_rotation = true
 script = ExtResource("1_rjeek")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.51, -2)
-scale = Vector2(202.875, 265.25)
-texture = SubResource("PlaceholderTexture2D_grfpe")
+scale = Vector2(7.75, 7.75)
+texture = ExtResource("2_amja5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.51004, -2.5)
+position = Vector2(-0.509998, -8.1165)
 scale = Vector2(2.1, 1.516)
 shape = SubResource("RectangleShape2D_rry2m")
 
@@ -34,6 +32,6 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2.01001, -2)
+position = Vector2(1.54951, -2)
 scale = Vector2(2.2, 1.589)
 shape = SubResource("RectangleShape2D_rry2m")
